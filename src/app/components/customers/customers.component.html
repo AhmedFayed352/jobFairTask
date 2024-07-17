@@ -1,1 +1,28 @@
-<p>customers works!</p>
+<div class="bg-body-tertiary m-5 p-5 shadow-lg rounded">
+    <h2 class="fs-2 fw-bold mb-4">Customers</h2>
+    <div class="mb-3">
+      <label for="nameFilter" class="form-label">Filter By Name</label>
+      <input [(ngModel)]="searchItem" type="text" class="form-control" id="nameFilter" placeholder="Enter Customer Name">
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-hover text-center">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let customer of customers|search:searchItem" (click)="selectCustomer(customer.id)">
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customerTransactionAmounts[customer.id] || 0}}</td>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <app-mycharts *ngIf="customerTransactions.length !=0" [transactions] = "customerTransactions"></app-mycharts>
+  </div>
