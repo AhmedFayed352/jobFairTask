@@ -28,7 +28,7 @@ export class CustomersComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.arr.push(this._CustomersService.get().subscribe({
       next: (response) => {
-        this.customers = response;
+        this.customers = response.customers;
         this.getAmounts();
       },
       error: (err) => {
@@ -38,7 +38,7 @@ export class CustomersComponent implements OnInit, OnDestroy{
 
     this.arr.push(this._TransactionService.get().subscribe({
       next: (response) => {
-        this.transactions = response;
+        this.transactions = response.transactions;
         this.getAmounts();
       },
       error: (err) => {
