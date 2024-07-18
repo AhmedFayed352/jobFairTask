@@ -9,9 +9,9 @@ export class TransactionService {
 
   constructor(private _HttpClient: HttpClient) { }
 
-  url: string = "http://localhost:3000";
+  url: string = "https://ahmedfayed352.github.io/ApiFile/transactions.json";
 
-  get(controller: string): Observable<any> {
-    return this._HttpClient.get(`${this.url}/${controller}`);
+  get(): Observable<any> {
+    return this._HttpClient.get(`${this.url}`);
   }
 }
